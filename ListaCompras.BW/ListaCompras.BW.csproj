@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\BW\" />
+    <Folder Include="Interfaces\DA\" />
+    <Folder Include="CU\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ListaCompras.BC\ListaCompras.BC.csproj" />
+  </ItemGroup>
+
+</Project>
