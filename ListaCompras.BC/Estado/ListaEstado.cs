@@ -2,7 +2,7 @@
 {
     public enum ListaEstado
     {
-        Activo = 0,
+        Activa = 0,
         Eliminada = 1
     }
 }

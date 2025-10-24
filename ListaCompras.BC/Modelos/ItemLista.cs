@@ -12,5 +12,11 @@ namespace ListaCompras.BC.Modelos
         public string? Unidad { get; set; }
 
         public ItemEstado Estado { get; set; }
+        public ItemLista()
+        {
+            IdItem = Guid.NewGuid();
+            Estado = ItemEstado.Pendiente;
+            Cantidad = 1;
+        }
     }
 }

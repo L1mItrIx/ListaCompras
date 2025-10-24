@@ -9,6 +9,13 @@ namespace ListaCompras.BC.Modelos
         public DateTime FechaObjetivo {get; set;}
         public ListaEstado Estado { get; set; }
 
-        public List<ItemLista> Productos { get; set; }
+        public List<ItemLista> Items { get; set; }
+
+        public ListaCompra()
+        {
+            IdLista = Guid.NewGuid();
+            Estado = ListaEstado.Activa;
+            Items = new List<ItemLista>();
+        }
     }
 }
