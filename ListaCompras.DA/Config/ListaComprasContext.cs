@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ListaCompras.DA.Entidades;
-using ListaCompras.BC.Modelos;
 
 namespace ListaCompras.DA.Config
 {
@@ -8,9 +7,9 @@ namespace ListaCompras.DA.Config
     {
         public ListaComprasContext(DbContextOptions<ListaComprasContext> options) : base(options) { }
 
-        public DbSet<ListaCompra> ListaCompra { get; set; }
+        public DbSet<ListaCompraDA> ListaCompra { get; set; }
 
-        public DbSet<ItemLista> ItemLista { get; set; }
+        public DbSet<ItemListaDA> ItemLista { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

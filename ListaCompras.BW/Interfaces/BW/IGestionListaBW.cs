@@ -1,8 +1,9 @@
-﻿using ListaCompras.BC.Modelos;
+﻿using ListaCompras.BC.Estado;
+using ListaCompras.BC.Modelos;
 
-namespace ListaCompras.BW.Interfaces.DA
+namespace ListaCompras.BW.Interfaces.BW
 {
-    public interface IGestionListaDA
+    public interface IGestionListaBW
     {
         Task<bool> crearLista(ListaCompra lista);
         Task<bool> eliminarLista(Guid idLista);
@@ -10,7 +11,7 @@ namespace ListaCompras.BW.Interfaces.DA
         //listar listas por varios metodos
         Task<List<ListaCompra>> obtenerListasActivas();
         Task<List<ListaCompra>> obtenerListasPorFechas(DateTime fecha);
- 
-        Task<bool> existeListaConNombre(string nombre, DateTime fecha);
+
+        Task<List<ListaCompra>> obtenerListasDeHoy();
     }
 }

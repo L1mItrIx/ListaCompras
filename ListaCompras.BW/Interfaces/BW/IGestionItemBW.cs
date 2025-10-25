@@ -1,9 +1,9 @@
 ﻿using ListaCompras.BC.Estado;
 using ListaCompras.BC.Modelos;
 
-namespace ListaCompras.BW.Interfaces.DA
+namespace ListaCompras.BW.Interfaces.BW
 {
-    public interface IGestionItemDA
+    public interface IGestionItemBW
     {
         Task<bool> agregarItem(ItemLista item);
 

@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\BW\" />
-    <Folder Include="CU\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ListaCompras.BC\ListaCompras.BC.csproj" />
   </ItemGroup>
 
