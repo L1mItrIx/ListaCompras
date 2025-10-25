@@ -9,40 +9,60 @@ namespace ListaCompras.BW.CU
     public class GestionItemBW : IGestionItemBW
     {
         private readonly IGestionItemDA gestionItemDA;
-        private readonly IGestionListaDA gestionListaDA;
 
-        public GestionItemBW(IGestionItemDA gestionItemDA, IGestionListaDA gestionListaDA)
+        public GestionItemBW(IGestionItemDA gestionItemDA)
         {
             this.gestionItemDA = gestionItemDA;
-            this.gestionListaDA = gestionListaDA;
         }
 
         public async Task<bool> agregarItem(ItemLista item)
         {
             if (!ReglasDeItem.itemEsValido(item))
             {
-                return Guid.Empty;
+                return false;
             }
+            return await gestionItemDA.agregarItem(item);
         }
 
-        public Task<bool> eliminarItem(Guid idItem)
+        public async Task<bool> eliminarItem(Guid idItem)
         {
-            throw new NotImplementedException();
+            if (!ReglasDeItem.idEsValido(idItem))
+            {
+                return false;
+            }
+            return await gestionItemDA.eliminarItem(idItem);
         }
 
-        public Task<bool> marcarProducto(Guid idItem, ItemEstado nuevoEstado)
+        public async Task<List<ItemLista>> obtenerItemsDeLista(Guid idLista)
         {
-            throw new NotImplementedException();
+            if (!ReglasDeLista.idEsValido(idLista))
+            {
+                return new List<ItemLista>();
+            }
+            return await gestionItemDA.obtenerItemsDeLista(idLista);
         }
 
-        public Task<List<ItemLista>> obtenerItemPendietes(Guid idLista)
+        public async Task<bool> marcarEstadoItem(Guid idItem, ItemEstado nuevoEstado)
         {
-            throw new NotImplementedException();
+            if (!ReglasDeItem.idEsValido(idItem))
+            {
+                return false;
+            }
+            if (!ReglasDeItem.elEstadoEsValido(nuevoEstado))
+            {
+                return false;
+            }
+            return await gestionItemDA.marcarEstadoItem(idItem, nuevoEstado);
         }
 
-        public Task<List<ItemLista>> obtenerItemsDeLista(Guid idLista)
+
+        public async Task<List<ItemLista>> obtenerItemsPendietes(Guid idLista)
         {
-            throw new NotImplementedException();
+            if (!ReglasDeLista.idEsValido(idLista))
+            {
+                return new List<ItemLista>();
+            }
+            return await gestionItemDA.obtenerItemsPendietes(idLista);
         }
     }
 }

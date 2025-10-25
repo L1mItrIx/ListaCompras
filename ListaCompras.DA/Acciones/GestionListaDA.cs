@@ -39,7 +39,7 @@ namespace ListaCompras.DA.Acciones
             try
             {
                 var lista = await listaComprasContext.ListaCompra.FindAsync(idLista);
-                if (lista != null)
+                if (lista == null)
                     return false;
                 lista.Estado = ListaEstado.Eliminada;
                 await listaComprasContext.SaveChangesAsync();

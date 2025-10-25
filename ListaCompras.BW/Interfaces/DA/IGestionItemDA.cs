@@ -11,8 +11,8 @@ namespace ListaCompras.BW.Interfaces.DA
 
         Task<List<ItemLista>> obtenerItemsDeLista(Guid idLista);
 
-        Task<bool> marcarProducto(Guid idItem, ItemEstado nuevoEstado);
+        Task<bool> marcarEstadoItem(Guid idItem, ItemEstado nuevoEstado);
 
-        Task<List<ItemLista>> obtenerItemPendietes(Guid idLista);
+        Task<List<ItemLista>> obtenerItemsPendietes(Guid idLista);
     }
 }

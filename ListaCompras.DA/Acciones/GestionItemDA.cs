@@ -38,7 +38,7 @@ namespace ListaCompras.DA.Acciones
             try
             {
                 var item = await listaComprasContext.ItemLista.FindAsync(idItem);
-                if (item != null)
+                if (item == null)
                     return false;
                 listaComprasContext.ItemLista.Remove(item);
                 await listaComprasContext.SaveChangesAsync();
@@ -66,12 +66,12 @@ namespace ListaCompras.DA.Acciones
             }catch(Exception ex) { return new List<ItemLista> (); }
         }
 
-        public async Task<bool> marcarProducto(Guid idItem, ItemEstado nuevoEstado) 
+        public async Task<bool> marcarEstadoItem(Guid idItem, ItemEstado nuevoEstado) 
         {
             try
             {
                 var item = await listaComprasContext.ItemLista.FindAsync(idItem);
-                if (item != null)
+                if (item == null)
                     return false;
                 item.Estado = nuevoEstado;
                 await listaComprasContext.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace ListaCompras.DA.Acciones
             catch(Exception ex) { return false; }
         }
 
-        public async Task<List<ItemLista>> obtenerItemPendietes(Guid idLista)
+        public async Task<List<ItemLista>> obtenerItemsPendietes(Guid idLista)
         {
             try
             {
