@@ -1,0 +1,11 @@
+{
+  "name": "lista-compras-alexa",
+  "version": "1.0.0",
+  "description": "Alexa Skill para gestionar listas de compras",
+  "main": "index.js",
+  "dependencies": {
+    "ask-sdk-core": "^2.13.0",
+    "ask-sdk-model": "^1.39.0",
+    "axios": "^1.6.0"
+  }
+}
