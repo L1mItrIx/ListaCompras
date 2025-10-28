@@ -1,11 +1,23 @@
 {
-  "name": "lista-compras-alexa",
+  "name": "lista-compras-alexa-skill",
   "version": "1.0.0",
-  "description": "Alexa Skill para gestionar listas de compras",
+  "description": "Alexa Skill para gestión de listas de compras",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "shopping",
+    "lista",
+    "compras"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "ask-sdk-core": "^2.13.0",
-    "ask-sdk-model": "^1.39.0",
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.41.1",
     "axios": "^1.6.0"
   }
 }

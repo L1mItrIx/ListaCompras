@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ListaCompras.API.Controllers
 {
-    /// <summary>
-    /// Controller para gestionar listas de compras
-    /// Expone endpoints HTTP que Alexa puede consumir
-    /// </summary>
+
     [ApiController]
     [Route("[controller]")]
     public class ListasController : ControllerBase
@@ -15,27 +12,17 @@ namespace ListaCompras.API.Controllers
         private readonly IGestionListaBW gestionListaBW;
         private readonly ILogger<ListasController> logger;
 
-        /// <summary>
-        /// Constructor con inyección de dependencias
-        /// </summary>
         public ListasController(IGestionListaBW gestionListaBW, ILogger<ListasController> logger)
         {
             this.gestionListaBW = gestionListaBW;
             this.logger = logger;
         }
 
-        /// <summary>
-        /// POST /Listas
-        /// Crea una nueva lista de compras
-        /// </summary>
-        /// <param name="lista">Datos de la lista a crear</param>
-        /// <returns>200 OK si se creó, 400 BadRequest si falló</returns>
         [HttpPost]
         public async Task<ActionResult> CrearLista([FromBody] ListaCompra lista)
         {
             try
             {
-                // Llamar a BW para crear la lista
                 bool resultado = await gestionListaBW.crearLista(lista);
 
                 if (!resultado)
@@ -57,11 +44,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// GET /Listas/activas
-        /// Obtiene todas las listas activas
-        /// </summary>
-        /// <returns>200 OK con la lista de listas</returns>
         [HttpGet("activas")]
         public async Task<ActionResult<List<ListaCompra>>> ObtenerListasActivas()
         {
@@ -82,11 +64,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// GET /Listas/hoy
-        /// Obtiene las listas de hoy
-        /// </summary>
-        /// <returns>200 OK con las listas de hoy</returns>
         [HttpGet("hoy")]
         public async Task<ActionResult<List<ListaCompra>>> ObtenerListasDeHoy()
         {
@@ -118,12 +95,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// GET /Listas/fecha/{fecha}
-        /// Obtiene las listas de una fecha específica
-        /// </summary>
-        /// <param name="fecha">Fecha en formato yyyy-MM-dd</param>
-        /// <returns>200 OK con las listas de esa fecha</returns>
         [HttpGet("fecha/{fecha}")]
         public async Task<ActionResult<List<ListaCompra>>> ObtenerListasPorFecha(DateTime fecha)
         {

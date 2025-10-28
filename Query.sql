@@ -82,26 +82,7 @@ SELECT * FROM ListaCompra;
 -- Ver todos los items
 SELECT * FROM ItemLista;
 
--- Ver listas con sus items
-SELECT 
-    L.Nombre AS Lista,
-    L.FechaObjetivo,
-    CASE L.Estado 
-        WHEN 0 THEN 'Activa' 
-        WHEN 1 THEN 'Eliminada' 
-    END AS EstadoLista,
-    I.NombreProducto,
-    I.Cantidad,
-    I.Unidad,
-    CASE I.Estado 
-        WHEN 0 THEN 'Pendiente' 
-        WHEN 1 THEN 'Comprado' 
-    END AS EstadoItem
-FROM ListaCompra L
-LEFT JOIN ItemLista I ON L.IdLista = I.IdLista
-ORDER BY L.FechaObjetivo DESC, L.Nombre, I.NombreProducto;
 
-GO
 
-DELETE FROM ItemLista;
-DELETE FROM ListaCompra;
+--DELETE FROM ItemLista;
+--DELETE FROM ListaCompra;

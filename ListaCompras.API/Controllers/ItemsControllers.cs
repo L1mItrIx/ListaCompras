@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ListaCompras.API.Controllers
 {
-    /// <summary>
-    /// Controller para gestionar items/productos de las listas
-    /// </summary>
+
     [ApiController]
     [Route("[controller]")]
     public class ItemsController : ControllerBase
@@ -21,12 +19,6 @@ namespace ListaCompras.API.Controllers
             this.logger = logger;
         }
 
-        /// <summary>
-        /// POST /Items
-        /// Agrega un nuevo item a una lista
-        /// </summary>
-        /// <param name="item">Datos del item a agregar</param>
-        /// <returns>200 OK si se agregó, 400 BadRequest si falló</returns>
         [HttpPost]
         public async Task<ActionResult> AgregarItem([FromBody] ItemLista item)
         {
@@ -55,12 +47,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// GET /Items/lista/{idLista}
-        /// Obtiene todos los items de una lista
-        /// </summary>
-        /// <param name="idLista">ID de la lista</param>
-        /// <returns>200 OK con los items</returns>
         [HttpGet("lista/{idLista}")]
         public async Task<ActionResult<List<ItemLista>>> ObtenerItemsDeLista(Guid idLista)
         {
@@ -82,12 +68,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// GET /Items/pendientes/{idLista}
-        /// Obtiene solo los items pendientes de una lista
-        /// </summary>
-        /// <param name="idLista">ID de la lista</param>
-        /// <returns>200 OK con los items pendientes</returns>
         [HttpGet("pendientes/{idLista}")]
         public async Task<ActionResult<List<ItemLista>>> ObtenerItemsPendientes(Guid idLista)
         {
@@ -121,12 +101,6 @@ namespace ListaCompras.API.Controllers
             }
         }
 
-        /// <summary>
-        /// DELETE /Items/{id}
-        /// Elimina un item de una lista
-        /// </summary>
-        /// <param name="id">ID del item a eliminar</param>
-        /// <returns>200 OK si se eliminó, 404 NotFound si no existe</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> EliminarItem(Guid id)
         {
@@ -147,14 +121,6 @@ namespace ListaCompras.API.Controllers
                 return StatusCode(500, new { mensaje = "Error interno del servidor" });
             }
         }
-
-        /// <summary>
-        /// PUT /Items/{id}/estado
-        /// Cambia el estado de un item (Pendiente ↔ Comprado)
-        /// </summary>
-        /// <param name="id">ID del item</param>
-        /// <param name="request">Objeto con el nuevo estado</param>
-        /// <returns>200 OK si se cambió, 404 NotFound si no existe</returns>
         [HttpPut("{id}/estado")]
         public async Task<ActionResult> MarcarEstadoItem(Guid id, [FromBody] CambiarEstadoRequest request)
         {
@@ -184,9 +150,6 @@ namespace ListaCompras.API.Controllers
         }
     }
 
-    /// <summary>
-    /// DTO (Data Transfer Object) para cambiar el estado de un item
-    /// </summary>
     public class CambiarEstadoRequest
     {
         public ItemEstado NuevoEstado { get; set; }
