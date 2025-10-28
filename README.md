@@ -191,6 +191,8 @@ Error: "No se conecta a la API"
 **Causa**: Al borrar la skill de alexa puede suceder un error que utiliza el id de la skill vieja y tiene errores al momento de querer actualizarla a una nueva
 esto provoca que no se puedan realizar actualizaciones, se ha intentado forzar el cambio del skill del id por el json manual, pero no hubo exito
 
+**Causa**: Se desconoce y no se ha podido realizar ciertos intents porque el Skill de Alexa no actualizaba el id
+
 📊 Estructura de la Base de Datos
 
 ```
